@@ -35,11 +35,7 @@ class _AppBottomnavState extends State<AppBottomnav> {
 
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Discover'),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.calendar_today_outlined),
-            label: 'Routine',
-          ),
+          BottomNavigationBarItem(icon: Icon(Icons.money), label: 'Crypto'),
         ],
       ),
     );
