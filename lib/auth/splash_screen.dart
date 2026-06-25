@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:tugas_api_crypto/auth/form_login.dart';
 import 'package:tugas_api_crypto/database/preferences_handler.dart';
 import 'package:tugas_api_crypto/extension/extension.dart';
@@ -31,61 +32,79 @@ class Splash_Screen extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        padding: const EdgeInsets.all(25),
-        width: double.infinity,
-        height: double.infinity,
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [Color(0xFFF6F1EE), Color(0xFF7C9A92)],
-          ),
-        ),
-
-        child: Center(
-          child: Container(
-            width: 320,
-            height: 400,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(35),
-            ),
-
+      backgroundColor: Colors.white,
+      body: Stack(
+        children: [
+          Center(
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
               children: [
-                Container(
-                  height: 80,
-                  width: 80,
-                  padding: EdgeInsets.all(8),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    shape: BoxShape.circle,
-                    image: DecorationImage(
-                      fit: BoxFit.cover,
-                      image: AssetImage("assets/images/KaisLogo.png"),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "|<",
+                      style: GoogleFonts.inter(
+                        fontSize: 70,
+                        fontWeight: FontWeight.w800,
+                        color: const Color(0xFF1677FF),
+                      ),
                     ),
+
+                    const SizedBox(width: 12),
+
+                    RichText(
+                      text: TextSpan(
+                        children: [
+                          TextSpan(
+                            text: "KAIS ",
+                            style: GoogleFonts.inter(
+                              color: Colors.black,
+                              fontSize: 24,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                          TextSpan(
+                            text: "CRYPTO",
+                            style: GoogleFonts.inter(
+                              color: const Color(0xFF1677FF),
+                              fontSize: 24,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+
+                const SizedBox(height: 40),
+
+                Text(
+                  "KAIS CRYPTO",
+                  style: GoogleFonts.inter(
+                    fontSize: 26,
+                    fontWeight: FontWeight.w800,
+                    color: const Color(0xFF0F172A),
+                    letterSpacing: 1,
                   ),
                 ),
 
-                Text(
-                  "Skinoura",
-                  style: TextStyle(
-                    fontSize: 32,
-                    fontWeight: FontWeight.bold,
-                    color: Color(0xFF7C9A92),
-                  ),
-                ),
+                const SizedBox(height: 10),
 
                 Text(
-                  "Your skincare journey begins here.",
-                  style: TextStyle(fontSize: 14, color: Color(0xFF7C9A92)),
+                  "TRACK THE FUTURE",
+                  style: GoogleFonts.inter(
+                    fontSize: 13,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.grey.shade600,
+                    letterSpacing: 5,
+                  ),
                 ),
               ],
             ),
           ),
-        ),
+        ],
       ),
     );
   }

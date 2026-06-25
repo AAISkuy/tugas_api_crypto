@@ -65,7 +65,7 @@ class _FormloginState extends State<Formlogin> {
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            colors: [Color(0xFFF6F1EE), Color(0xFF7C9A92)],
+            colors: [Color(0xFFF6F1EE), Color.fromARGB(255, 69, 212, 255)],
           ),
         ),
         child: Form(
@@ -98,16 +98,19 @@ class _FormloginState extends State<Formlogin> {
                       ),
                     ),
                     const Text(
-                      "Skinoura",
+                      "Kais",
                       style: TextStyle(
                         fontSize: 32,
                         fontWeight: FontWeight.bold,
-                        color: Color(0xFF7C9A92),
+                        color: Color.fromARGB(255, 69, 212, 255),
                       ),
                     ),
                     const Text(
-                      "Your skincare journey begins here.",
-                      style: TextStyle(fontSize: 14, color: Color(0xFF7C9A92)),
+                      "Your Crypto journey begins here.",
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: Color.fromARGB(255, 69, 212, 255),
+                      ),
                     ),
                     const SizedBox(height: 10),
                     Column(
@@ -122,13 +125,13 @@ class _FormloginState extends State<Formlogin> {
                               hintText: "Masukkan Email Anda",
                               focusedBorder: OutlineInputBorder(
                                 borderSide: const BorderSide(
-                                  color: Color(0xFF7C9A92),
+                                  color: Color.fromARGB(255, 69, 212, 255),
                                 ),
                                 borderRadius: BorderRadius.circular(12),
                               ),
                               border: OutlineInputBorder(
                                 borderSide: const BorderSide(
-                                  color: Color(0xFF7C9A92),
+                                  color: Color.fromARGB(255, 69, 212, 255),
                                 ),
                                 borderRadius: BorderRadius.circular(12),
                               ),
@@ -153,13 +156,13 @@ class _FormloginState extends State<Formlogin> {
                               hintText: "Masukkan Password Anda",
                               focusedBorder: OutlineInputBorder(
                                 borderSide: const BorderSide(
-                                  color: Color(0xFF7C9A92),
+                                  color: Color.fromARGB(255, 69, 212, 255),
                                 ),
                                 borderRadius: BorderRadius.circular(12),
                               ),
                               border: OutlineInputBorder(
                                 borderSide: const BorderSide(
-                                  color: Color(0xFF7C9A92),
+                                  color: Color.fromARGB(255, 69, 212, 255),
                                 ),
                                 borderRadius: BorderRadius.circular(12),
                               ),
@@ -200,7 +203,12 @@ class _FormloginState extends State<Formlogin> {
                                 }
                               },
                               style: ElevatedButton.styleFrom(
-                                backgroundColor: const Color(0xFF7C9A92),
+                                backgroundColor: const Color.fromARGB(
+                                  255,
+                                  69,
+                                  212,
+                                  255,
+                                ),
                               ),
                               child: const Text(
                                 "Sign In",
@@ -241,7 +249,12 @@ class _FormloginState extends State<Formlogin> {
                                 }
                               },
                               style: ElevatedButton.styleFrom(
-                                backgroundColor: const Color(0xFF7C9A92),
+                                backgroundColor: const Color.fromARGB(
+                                  255,
+                                  69,
+                                  212,
+                                  255,
+                                ),
                               ),
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -276,7 +289,7 @@ class _FormloginState extends State<Formlogin> {
                                     ),
                                   text: "Create an account",
                                   style: const TextStyle(
-                                    color: Color(0xFF7C9A92),
+                                    color: Color.fromARGB(255, 69, 212, 255),
                                     decoration: TextDecoration.underline,
                                   ),
                                 ),

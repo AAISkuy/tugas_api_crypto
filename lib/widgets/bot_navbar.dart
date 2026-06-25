@@ -29,13 +29,16 @@ class _AppBottomnavState extends State<AppBottomnav> {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
         backgroundColor: Colors.white,
-        selectedItemColor: Color(0xFF7C9A92),
+        selectedItemColor: Color.fromARGB(255, 69, 212, 255),
         unselectedItemColor: Colors.blueGrey,
         onTap: _onBottomNavTapped,
 
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.money), label: 'Crypto'),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.show_chart),
+            label: 'market',
+          ),
         ],
       ),
     );

@@ -98,117 +98,121 @@ class _CryptolistscreenState extends State<Cryptolistscreen> {
             filteredPosts = posts;
           }
 
-          return Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(16),
-                child: TextField(
-                  controller: searchController,
-                  onChanged: searchCrypto,
-                  decoration: InputDecoration(
-                    hintText: "Cari Crypto...",
-                    prefixIcon: const Icon(Icons.search),
-                    suffixIcon: IconButton(
-                      icon: const Icon(Icons.clear),
-                      onPressed: () {
-                        searchController.clear();
-                        searchCrypto('');
-                      },
-                    ),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
+          return SafeArea(
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: TextField(
+                    controller: searchController,
+                    onChanged: searchCrypto,
+                    decoration: InputDecoration(
+                      hintText: "Cari Coin...",
+                      prefixIcon: const Icon(Icons.search),
+                      suffixIcon: IconButton(
+                        icon: const Icon(Icons.clear),
+                        onPressed: () {
+                          searchController.clear();
+                          searchCrypto('');
+                        },
+                      ),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
                     ),
                   ),
                 ),
-              ),
 
-              Expanded(
-                child: RefreshIndicator(
-                  onRefresh: () async => _refreshPost(),
-                  child: ListView.builder(
-                    itemCount: filteredPosts.length,
-                    itemBuilder: (context, index) {
-                      final post = filteredPosts[index];
-                      return Container(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 16,
-                          vertical: 12,
-                        ),
-                        child: Row(
-                          children: [
-                            CircleAvatar(
-                              radius: 24,
-                              backgroundImage: NetworkImage(post.image),
-                            ),
+                Expanded(
+                  child: RefreshIndicator(
+                    onRefresh: () async => _refreshPost(),
+                    child: ListView.builder(
+                      itemCount: filteredPosts.length,
+                      itemBuilder: (context, index) {
+                        final post = filteredPosts[index];
+                        return Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 16,
+                            vertical: 12,
+                          ),
+                          child: Row(
+                            children: [
+                              CircleAvatar(
+                                radius: 24,
+                                backgroundImage: NetworkImage(post.image),
+                              ),
 
-                            const SizedBox(width: 12),
+                              const SizedBox(width: 12),
 
-                            Expanded(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      post.symbol.toUpperCase(),
+                                      style: const TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+
+                                    Text(
+                                      post.name,
+                                      style: const TextStyle(
+                                        color: Colors.grey,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.end,
                                 children: [
                                   Text(
-                                    post.symbol.toUpperCase(),
+                                    formatRupiah(post.currentPrice),
                                     style: const TextStyle(
-                                      fontSize: 18,
                                       fontWeight: FontWeight.bold,
+                                      fontSize: 16,
                                     ),
                                   ),
 
                                   Text(
-                                    post.name,
+                                    "Rank #${post.marketCapRank}",
                                     style: const TextStyle(color: Colors.grey),
                                   ),
                                 ],
                               ),
-                            ),
 
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              children: [
-                                Text(
-                                  formatRupiah(post.currentPrice),
+                              const SizedBox(width: 16),
+
+                              Container(
+                                width: 90,
+                                height: 40,
+                                alignment: Alignment.center,
+                                decoration: BoxDecoration(
+                                  color: post.priceChangePercentage24H >= 0
+                                      ? Colors.green
+                                      : Colors.red,
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                child: Text(
+                                  "${post.priceChangePercentage24H.toStringAsFixed(2)}%",
                                   style: const TextStyle(
+                                    color: Colors.white,
                                     fontWeight: FontWeight.bold,
-                                    fontSize: 16,
                                   ),
                                 ),
-
-                                Text(
-                                  "Rank #${post.marketCapRank}",
-                                  style: const TextStyle(color: Colors.grey),
-                                ),
-                              ],
-                            ),
-
-                            const SizedBox(width: 16),
-
-                            Container(
-                              width: 90,
-                              height: 40,
-                              alignment: Alignment.center,
-                              decoration: BoxDecoration(
-                                color: post.priceChangePercentage24H >= 0
-                                    ? Colors.green
-                                    : Colors.red,
-                                borderRadius: BorderRadius.circular(10),
                               ),
-                              child: Text(
-                                "${post.priceChangePercentage24H.toStringAsFixed(2)}%",
-                                style: const TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      );
-                    },
+                            ],
+                          ),
+                        );
+                      },
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           );
         },
       ),
