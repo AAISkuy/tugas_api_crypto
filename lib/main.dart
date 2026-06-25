@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:tugas_api_crypto/auth/form_login.dart';
+import 'package:tugas_api_crypto/auth/splash_screen.dart';
+import 'package:tugas_api_crypto/database/preferences_handler.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await PreferencesHandler.init();
   runApp(const MyApp());
 }
 
@@ -11,6 +16,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         // This is the theme of your application.
@@ -30,7 +36,12 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: .fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      // home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      initialRoute: "/",
+      routes: {
+        '/': (context) => SplashScreen(),
+        '/login': (context) => const Formlogin(),
+      },
     );
   }
 }
