@@ -28,8 +28,10 @@ class _CryptolistscreenState extends State<Cryptolistscreen> {
         filteredPosts = allPosts;
       } else {
         filteredPosts = allPosts.where((crypto) {
-          return crypto.name.toLowerCase().contains(query.toLowerCase()) ||
-              crypto.symbol.toLowerCase().contains(query.toLowerCase());
+          return (crypto.name ?? "").toLowerCase().contains(
+                query.toLowerCase(),
+              ) ||
+              (crypto.symbol ?? "").toLowerCase().contains(query.toLowerCase());
         }).toList();
       }
     });
@@ -139,7 +141,7 @@ class _CryptolistscreenState extends State<Cryptolistscreen> {
                             children: [
                               CircleAvatar(
                                 radius: 24,
-                                backgroundImage: NetworkImage(post.image),
+                                backgroundImage: NetworkImage(post.image ?? ""),
                               ),
 
                               const SizedBox(width: 12),
@@ -149,7 +151,7 @@ class _CryptolistscreenState extends State<Cryptolistscreen> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      post.symbol.toUpperCase(),
+                                      (post.symbol ?? "").toUpperCase(),
                                       style: const TextStyle(
                                         fontSize: 18,
                                         fontWeight: FontWeight.bold,
@@ -157,7 +159,7 @@ class _CryptolistscreenState extends State<Cryptolistscreen> {
                                     ),
 
                                     Text(
-                                      post.name,
+                                      post.name ?? "",
                                       style: const TextStyle(
                                         color: Colors.grey,
                                       ),
@@ -170,7 +172,7 @@ class _CryptolistscreenState extends State<Cryptolistscreen> {
                                 crossAxisAlignment: CrossAxisAlignment.end,
                                 children: [
                                   Text(
-                                    formatRupiah(post.currentPrice),
+                                    formatRupiah(post.currentPrice ?? 0),
                                     style: const TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 16,
@@ -178,7 +180,7 @@ class _CryptolistscreenState extends State<Cryptolistscreen> {
                                   ),
 
                                   Text(
-                                    "Rank #${post.marketCapRank}",
+                                    "Rank #${post.marketCapRank ?? ''}",
                                     style: const TextStyle(color: Colors.grey),
                                   ),
                                 ],
@@ -191,13 +193,14 @@ class _CryptolistscreenState extends State<Cryptolistscreen> {
                                 height: 40,
                                 alignment: Alignment.center,
                                 decoration: BoxDecoration(
-                                  color: post.priceChangePercentage24H >= 0
+                                  color:
+                                      (post.priceChangePercentage24H ?? 0) >= 0
                                       ? Colors.green
                                       : Colors.red,
                                   borderRadius: BorderRadius.circular(10),
                                 ),
                                 child: Text(
-                                  "${post.priceChangePercentage24H.toStringAsFixed(2)}%",
+                                  "${(post.priceChangePercentage24H ?? 0).toStringAsFixed(2)}%",
                                   style: const TextStyle(
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,

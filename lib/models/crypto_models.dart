@@ -18,57 +18,57 @@ String cryptoModelsToJson(List<CryptoModels> data) =>
 @JsonSerializable()
 class CryptoModels {
   @JsonKey(name: "id")
-  String id;
+  String? id;
   @JsonKey(name: "symbol")
-  String symbol;
+  String? symbol;
   @JsonKey(name: "name")
-  String name;
+  String? name;
   @JsonKey(name: "image")
-  String image;
+  String? image;
   @JsonKey(name: "current_price")
-  double currentPrice;
+  double? currentPrice;
   @JsonKey(name: "market_cap")
-  double marketCap;
+  double? marketCap;
   @JsonKey(name: "market_cap_rank")
-  int marketCapRank;
+  int? marketCapRank;
   @JsonKey(name: "fully_diluted_valuation")
-  double fullyDilutedValuation;
+  double? fullyDilutedValuation;
   @JsonKey(name: "total_volume")
   int? totalVolume;
   @JsonKey(name: "high_24h")
-  double high24H;
+  double? high24H;
   @JsonKey(name: "low_24h")
-  double low24H;
+  double? low24H;
   @JsonKey(name: "price_change_24h")
-  double priceChange24H;
+  double? priceChange24H;
   @JsonKey(name: "price_change_percentage_24h")
-  double priceChangePercentage24H;
+  double? priceChangePercentage24H;
   @JsonKey(name: "market_cap_change_24h")
-  double marketCapChange24H;
+  double? marketCapChange24H;
   @JsonKey(name: "market_cap_change_percentage_24h")
-  double marketCapChangePercentage24H;
+  double? marketCapChangePercentage24H;
   @JsonKey(name: "circulating_supply")
-  double circulatingSupply;
+  double? circulatingSupply;
   @JsonKey(name: "total_supply")
-  double totalSupply;
+  double? totalSupply;
   @JsonKey(name: "max_supply")
   double? maxSupply;
   @JsonKey(name: "ath")
-  double ath;
+  double? ath;
   @JsonKey(name: "ath_change_percentage")
-  double athChangePercentage;
+  double? athChangePercentage;
   @JsonKey(name: "ath_date")
-  DateTime athDate;
+  DateTime? athDate;
   @JsonKey(name: "atl")
-  double atl;
+  double? atl;
   @JsonKey(name: "atl_change_percentage")
-  double atlChangePercentage;
+  double? atlChangePercentage;
   @JsonKey(name: "atl_date")
-  DateTime atlDate;
+  DateTime? atlDate;
   @JsonKey(name: "roi")
   Roi? roi;
   @JsonKey(name: "last_updated")
-  DateTime lastUpdated;
+  DateTime? lastUpdated;
 
   CryptoModels({
     required this.id,
@@ -108,11 +108,11 @@ class CryptoModels {
 @JsonSerializable()
 class Roi {
   @JsonKey(name: "times")
-  double times;
+  double? times;
   @JsonKey(name: "currency")
-  String currency;
+  String? currency;
   @JsonKey(name: "percentage")
-  double percentage;
+  double? percentage;
 
   Roi({required this.times, required this.currency, required this.percentage});
 

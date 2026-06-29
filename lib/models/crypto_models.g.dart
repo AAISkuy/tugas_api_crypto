@@ -7,36 +7,42 @@ part of 'crypto_models.dart';
 // **************************************************************************
 
 CryptoModels _$CryptoModelsFromJson(Map<String, dynamic> json) => CryptoModels(
-  id: json['id'] as String,
-  symbol: json['symbol'] as String,
-  name: json['name'] as String,
-  image: json['image'] as String,
-  currentPrice: (json['current_price'] as num).toDouble(),
-  marketCap: (json['market_cap'] as num).toDouble(),
-  marketCapRank: (json['market_cap_rank'] as num).toInt(),
-  fullyDilutedValuation: (json['fully_diluted_valuation'] as num).toDouble(),
+  id: json['id'] as String?,
+  symbol: json['symbol'] as String?,
+  name: json['name'] as String?,
+  image: json['image'] as String?,
+  currentPrice: (json['current_price'] as num?)?.toDouble(),
+  marketCap: (json['market_cap'] as num?)?.toDouble(),
+  marketCapRank: (json['market_cap_rank'] as num?)?.toInt(),
+  fullyDilutedValuation: (json['fully_diluted_valuation'] as num?)?.toDouble(),
   totalVolume: (json['total_volume'] as num?)?.toInt(),
-  high24H: (json['high_24h'] as num).toDouble(),
-  low24H: (json['low_24h'] as num).toDouble(),
-  priceChange24H: (json['price_change_24h'] as num).toDouble(),
-  priceChangePercentage24H: (json['price_change_percentage_24h'] as num)
-      .toDouble(),
-  marketCapChange24H: (json['market_cap_change_24h'] as num).toDouble(),
+  high24H: (json['high_24h'] as num?)?.toDouble(),
+  low24H: (json['low_24h'] as num?)?.toDouble(),
+  priceChange24H: (json['price_change_24h'] as num?)?.toDouble(),
+  priceChangePercentage24H: (json['price_change_percentage_24h'] as num?)
+      ?.toDouble(),
+  marketCapChange24H: (json['market_cap_change_24h'] as num?)?.toDouble(),
   marketCapChangePercentage24H:
-      (json['market_cap_change_percentage_24h'] as num).toDouble(),
-  circulatingSupply: (json['circulating_supply'] as num).toDouble(),
-  totalSupply: (json['total_supply'] as num).toDouble(),
+      (json['market_cap_change_percentage_24h'] as num?)?.toDouble(),
+  circulatingSupply: (json['circulating_supply'] as num?)?.toDouble(),
+  totalSupply: (json['total_supply'] as num?)?.toDouble(),
   maxSupply: (json['max_supply'] as num?)?.toDouble(),
-  ath: (json['ath'] as num).toDouble(),
-  athChangePercentage: (json['ath_change_percentage'] as num).toDouble(),
-  athDate: DateTime.parse(json['ath_date'] as String),
-  atl: (json['atl'] as num).toDouble(),
-  atlChangePercentage: (json['atl_change_percentage'] as num).toDouble(),
-  atlDate: DateTime.parse(json['atl_date'] as String),
+  ath: (json['ath'] as num?)?.toDouble(),
+  athChangePercentage: (json['ath_change_percentage'] as num?)?.toDouble(),
+  athDate: json['ath_date'] == null
+      ? null
+      : DateTime.parse(json['ath_date'] as String),
+  atl: (json['atl'] as num?)?.toDouble(),
+  atlChangePercentage: (json['atl_change_percentage'] as num?)?.toDouble(),
+  atlDate: json['atl_date'] == null
+      ? null
+      : DateTime.parse(json['atl_date'] as String),
   roi: json['roi'] == null
       ? null
       : Roi.fromJson(json['roi'] as Map<String, dynamic>),
-  lastUpdated: DateTime.parse(json['last_updated'] as String),
+  lastUpdated: json['last_updated'] == null
+      ? null
+      : DateTime.parse(json['last_updated'] as String),
 );
 
 Map<String, dynamic> _$CryptoModelsToJson(CryptoModels instance) =>
@@ -61,18 +67,18 @@ Map<String, dynamic> _$CryptoModelsToJson(CryptoModels instance) =>
       'max_supply': instance.maxSupply,
       'ath': instance.ath,
       'ath_change_percentage': instance.athChangePercentage,
-      'ath_date': instance.athDate.toIso8601String(),
+      'ath_date': instance.athDate?.toIso8601String(),
       'atl': instance.atl,
       'atl_change_percentage': instance.atlChangePercentage,
-      'atl_date': instance.atlDate.toIso8601String(),
+      'atl_date': instance.atlDate?.toIso8601String(),
       'roi': instance.roi,
-      'last_updated': instance.lastUpdated.toIso8601String(),
+      'last_updated': instance.lastUpdated?.toIso8601String(),
     };
 
 Roi _$RoiFromJson(Map<String, dynamic> json) => Roi(
-  times: (json['times'] as num).toDouble(),
-  currency: json['currency'] as String,
-  percentage: (json['percentage'] as num).toDouble(),
+  times: (json['times'] as num?)?.toDouble(),
+  currency: json['currency'] as String?,
+  percentage: (json['percentage'] as num?)?.toDouble(),
 );
 
 Map<String, dynamic> _$RoiToJson(Roi instance) => <String, dynamic>{
