@@ -3,6 +3,7 @@ import 'package:intl/intl.dart';
 import 'package:tugas_api_crypto/models/crypto_models.dart';
 import 'package:tugas_api_crypto/services/api_services.dart';
 import 'package:tugas_api_crypto/services/dio_client.dart';
+import 'package:tugas_api_crypto/views/coindetail.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -170,69 +171,82 @@ class _HomePageState extends State<HomePage> {
                         itemBuilder: (context, index) {
                           final coin = crypto[index];
 
-                          return Container(
-                            padding: const EdgeInsets.all(12),
-
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-
-                              borderRadius: BorderRadius.circular(18),
-
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.grey.withOpacity(.15),
-
-                                  blurRadius: 8,
+                          return InkWell(
+                            borderRadius: BorderRadius.circular(18),
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (_) =>
+                                      CoinDetailScreen(crypto: coin),
                                 ),
-                              ],
-                            ),
+                              );
+                            },
+                            child: Container(
+                              padding: const EdgeInsets.all(12),
 
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
 
-                              children: [
-                                Row(
-                                  children: [
-                                    CircleAvatar(
-                                      backgroundImage: NetworkImage(
-                                        coin.image ?? "",
-                                      ),
-                                    ),
+                                borderRadius: BorderRadius.circular(18),
 
-                                    const SizedBox(width: 8),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.grey.withOpacity(.15),
 
-                                    Text(
-                                      (coin.symbol ?? "").toUpperCase(),
-
-                                      style: const TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-
-                                const Spacer(),
-
-                                Text(
-                                  formatRupiah(coin.currentPrice),
-
-                                  style: const TextStyle(
-                                    fontWeight: FontWeight.bold,
+                                    blurRadius: 8,
                                   ),
-                                ),
+                                ],
+                              ),
 
-                                Text(
-                                  "${(coin.priceChangePercentage24H ?? 0).toStringAsFixed(2)}%",
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
 
-                                  style: TextStyle(
-                                    color:
-                                        (coin.priceChangePercentage24H ?? 0) >=
-                                            0
-                                        ? Colors.green
-                                        : Colors.red,
+                                children: [
+                                  Row(
+                                    children: [
+                                      CircleAvatar(
+                                        backgroundImage: NetworkImage(
+                                          coin.image ?? "",
+                                        ),
+                                      ),
+
+                                      const SizedBox(width: 8),
+
+                                      Text(
+                                        (coin.symbol ?? "").toUpperCase(),
+
+                                        style: const TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ],
                                   ),
-                                ),
-                              ],
+
+                                  const Spacer(),
+
+                                  Text(
+                                    formatRupiah(coin.currentPrice),
+
+                                    style: const TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+
+                                  Text(
+                                    "${(coin.priceChangePercentage24H ?? 0).toStringAsFixed(2)}%",
+
+                                    style: TextStyle(
+                                      color:
+                                          (coin.priceChangePercentage24H ??
+                                                  0) >=
+                                              0
+                                          ? Colors.green
+                                          : Colors.red,
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           );
                         },
@@ -318,43 +332,57 @@ class _HomePageState extends State<HomePage> {
                         itemBuilder: (context, index) {
                           final coin = crypto[index];
 
-                          return Container(
-                            width: 140,
+                          return InkWell(
+                            borderRadius: BorderRadius.circular(18),
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (_) =>
+                                      CoinDetailScreen(crypto: coin),
+                                ),
+                              );
+                            },
+                            child: Container(
+                              width: 140,
 
-                            margin: EdgeInsets.only(left: index == 0 ? 20 : 10),
+                              margin: EdgeInsets.only(
+                                left: index == 0 ? 20 : 10,
+                              ),
 
-                            padding: const EdgeInsets.all(12),
+                              padding: const EdgeInsets.all(12),
 
-                            decoration: BoxDecoration(
-                              color: Colors.white,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
 
-                              borderRadius: BorderRadius.circular(16),
-                            ),
+                                borderRadius: BorderRadius.circular(16),
+                              ),
 
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
 
-                              children: [
-                                CircleAvatar(
-                                  backgroundImage: NetworkImage(
-                                    coin.image ?? "",
+                                children: [
+                                  CircleAvatar(
+                                    backgroundImage: NetworkImage(
+                                      coin.image ?? "",
+                                    ),
                                   ),
-                                ),
 
-                                const Spacer(),
+                                  const Spacer(),
 
-                                Text(
-                                  (coin.symbol ?? "").toUpperCase(),
-                                  style: const TextStyle(
-                                    fontWeight: FontWeight.bold,
+                                  Text(
+                                    (coin.symbol ?? "").toUpperCase(),
+                                    style: const TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                    ),
                                   ),
-                                ),
 
-                                Text(
-                                  formatRupiah(coin.currentPrice),
-                                  style: const TextStyle(fontSize: 12),
-                                ),
-                              ],
+                                  Text(
+                                    formatRupiah(coin.currentPrice),
+                                    style: const TextStyle(fontSize: 12),
+                                  ),
+                                ],
+                              ),
                             ),
                           );
                         },
