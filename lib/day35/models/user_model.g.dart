@@ -23,6 +23,7 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) => UserModel(
   trainingId: json['training_id'] as String?,
   jenisKelamin: json['jenis_kelamin'],
   profilePhoto: json['profile_photo'] as String?,
+  profilePhotoUrl: json['profile_photo_url'] as String?,
   onesignalPlayerId: json['onesignal_player_id'] as String?,
   batch: json['batch'] == null
       ? null
@@ -45,6 +46,7 @@ Map<String, dynamic> _$UserModelToJson(UserModel instance) => <String, dynamic>{
   'training_id': instance.trainingId,
   'jenis_kelamin': instance.jenisKelamin,
   'profile_photo': instance.profilePhoto,
+  'profile_photo_url': instance.profilePhotoUrl,
   'onesignal_player_id': instance.onesignalPlayerId,
   'batch': instance.batch,
   'training': instance.training,
@@ -89,6 +91,8 @@ Training _$TrainingFromJson(Map<String, dynamic> json) => Training(
   updatedAt: json['updated_at'] == null
       ? null
       : DateTime.parse(json['updated_at'] as String),
+  units: json['units'] as List<dynamic>?,
+  activities: json['activities'] as List<dynamic>?,
 );
 
 Map<String, dynamic> _$TrainingToJson(Training instance) => <String, dynamic>{
@@ -100,4 +104,6 @@ Map<String, dynamic> _$TrainingToJson(Training instance) => <String, dynamic>{
   'duration': instance.duration,
   'created_at': instance.createdAt?.toIso8601String(),
   'updated_at': instance.updatedAt?.toIso8601String(),
+  'units': instance.units,
+  'activities': instance.activities,
 };

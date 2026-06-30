@@ -28,6 +28,8 @@ class UserModel {
   dynamic jenisKelamin;
   @JsonKey(name: "profile_photo")
   String? profilePhoto;
+  @JsonKey(name: "profile_photo_url")
+  String? profilePhotoUrl;
   @JsonKey(name: "onesignal_player_id")
   String? onesignalPlayerId;
   @JsonKey(name: "batch")
@@ -48,6 +50,7 @@ class UserModel {
     this.trainingId,
     this.jenisKelamin,
     this.profilePhoto,
+    this.profilePhotoUrl,
     this.onesignalPlayerId,
     this.batch,
     this.training,
@@ -106,6 +109,10 @@ class Training {
   DateTime? createdAt;
   @JsonKey(name: "updated_at")
   DateTime? updatedAt;
+  @JsonKey(name: "units")
+  List<dynamic>? units;
+  @JsonKey(name: "activities")
+  List<dynamic>? activities;
 
   Training({
     this.id,
@@ -116,6 +123,8 @@ class Training {
     this.duration,
     this.createdAt,
     this.updatedAt,
+    this.units,
+    this.activities,
   });
 
   factory Training.fromJson(Map<String, dynamic> json) =>

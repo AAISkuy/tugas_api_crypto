@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tugas_api_crypto/auth/form_login.dart';
 import 'package:tugas_api_crypto/auth/splash_screen.dart';
 import 'package:tugas_api_crypto/database/preferences_handler.dart';
+import 'package:tugas_api_crypto/day35/views/absensi_splash_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -34,17 +35,19 @@ class MyApp extends StatelessWidget {
         //
         // This works for code too, not just values: Most code changes can be
         // tested with just a hot reload.
-        colorScheme: .fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
       // home: const MyHomePage(title: 'Flutter Demo Home Page'),
-      initialRoute: "/",
+      initialRoute: "/absensi-splash",
       routes: {
         '/': (context) => SplashScreen(),
         '/login': (context) => const Formlogin(),
+        '/absensi-splash': (context) => const AbsensiSplashScreen(),
       },
     );
   }
 }
+
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});

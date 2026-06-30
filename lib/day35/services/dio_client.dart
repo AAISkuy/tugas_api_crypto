@@ -1,23 +1,28 @@
 import 'package:dio/dio.dart';
 
+import 'token_storage.dart';
+
 Dio createDioClient() {
   final dio = Dio(
     BaseOptions(
-      baseUrl: 'https://absensib1.mobileprojp.com',
-      connectTimeout: const Duration(seconds: 15),
-      receiveTimeout: const Duration(seconds: 15),
-      headers: {'Accept': 'application/json'},
-    ), // BaseOptions
-  ); // Dio
+      baseUrl: 'https://appabsensi.mobileprojp.com',
+      connectTimeout: const Duration(seconds: 10),
+      receiveTimeout: const Duration(seconds: 10),
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+    ),
+  );
 
   dio.interceptors.add(
     InterceptorsWrapper(
       onRequest: (options, handler) async {
-        final token = await TokenStorage.getToken();
-        if (token != null && token.isNotEmpty) {
+        final token = await TokenStorage().getToken();
+        if (token != null) {
           options.headers['Authorization'] = 'Bearer $token';
         }
-        handler.next(options);
+        return handler.next(options);
       },
     ),
   );

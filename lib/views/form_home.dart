@@ -81,7 +81,7 @@ class _HomePageState extends State<HomePage> {
                             height: 45,
 
                             decoration: BoxDecoration(
-                              color: Colors.blue,
+                              color: Color.fromARGB(255, 69, 212, 255),
 
                               borderRadius: BorderRadius.circular(14),
                             ),
@@ -206,6 +206,7 @@ class _HomePageState extends State<HomePage> {
                                   Row(
                                     children: [
                                       CircleAvatar(
+                                        radius: 18,
                                         backgroundImage: NetworkImage(
                                           coin.image ?? "",
                                         ),
@@ -213,11 +214,14 @@ class _HomePageState extends State<HomePage> {
 
                                       const SizedBox(width: 8),
 
-                                      Text(
-                                        (coin.symbol ?? "").toUpperCase(),
-
-                                        style: const TextStyle(
-                                          fontWeight: FontWeight.bold,
+                                      Expanded(
+                                        child: Text(
+                                          (coin.symbol ?? "").toUpperCase(),
+                                          maxLines: 1,
+                                          overflow: TextOverflow.ellipsis,
+                                          style: const TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                          ),
                                         ),
                                       ),
                                     ],
